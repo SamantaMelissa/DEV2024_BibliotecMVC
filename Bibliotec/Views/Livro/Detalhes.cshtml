@@ -1,0 +1,55 @@
+@{
+    ViewData["Title"] = "Destalhes do Livro";
+}
+
+<main class="container-main">
+  <div class="box-conteudo listar-livros">
+      @* <img src="~/images/arrow-left.svg" alt=""> *@
+    <h1>Detalhes do Livros</h1>
+    <h2 class="tituloLivro">@ViewBag.Livro.Nome</h2>
+    <div class="linha"></div>
+    <!-- Fim da Parte do admin -->
+
+    <div class="conteudoLivro">
+      <div class="imgLivro">
+          <img style="width: 400px;" id="imagemLivro" src="~/images/Livros/@ViewBag.Livro.Imagem" alt="Imagem da capa do livro @ViewBag.Livro.Imagem">
+      </div>
+
+      <div class="descricaoLivro">
+        <span><strong>Descrição:</strong></span>
+        <p>@ViewBag.Livro.Descricao</p>
+
+        <div class="botoesAcoes">
+          <button class="botao reservar btn">Reservar</button>
+          <a class="coracao" href=""><img src="~/images/heart-solid 2.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="linha"></div>
+
+    <div class="detalhesLivro">
+      <p><strong>Editora:</strong>@ViewBag.Livro.Editora</p>
+      <p><strong>Escritor:</strong>@ViewBag.Livro.Escritor</p>
+      <p><strong>Idioma:</strong> @ViewBag.Livro.Idioma</p>
+    </div>
+      @if (ViewBag.Categoria != null && ViewBag.Categoria.Count > 0)
+  {
+      <p><strong>Categoria:</strong>
+      <ul>
+          @foreach (var categoria in ViewBag.Categoria)
+          {
+              <li>@categoria.Nome</li>
+          }
+      </ul>
+      </p>
+  }
+  else
+  {
+      <p>Este livro não possui categorias.</p>
+  }
+
+
+
+  </div>
+  </main>
